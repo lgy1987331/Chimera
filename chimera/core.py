@@ -21,19 +21,19 @@ class DialogueFrame(BaseModel):
     content: str = Field(description="角色发言，需与原文保持完全一致")
     action: Optional[str] = Field(description="角色发言过程中的肢体语言或行为，需与原文保持完全一致")
 
-
-class DescriptionFrame(BaseModel):
-    '''描述帧(DescriptionFrame)是一段人物动作描写、剧情解释说明、独白，可以不包含任何角色，也可以包含一个或多个角色'''
-    type: Literal["description"]
-    character_names: Optional[List[str]] = Field(default_factory=list)
-    content: str = Field(description="小说原文")
-
-
 class InnerThoughtFrame(BaseModel):
     '''内心活动帧(InnerThoughtFrame)是一位角色的内心想法或活动'''
     type: Literal["dialogue"]
     character_name: str = Field(default_factory=list)
     content: str = Field(description="角色内心活动或想法，需与原文保持完全一致")
+
+
+class DescriptionFrame(BaseModel):
+    '''描述帧(DescriptionFrame)是人物动作描写、环境背景描写、剧情解释说明、旁白。可以不包含任何角色，也可以包含一个或多个角色；不包括对话帧（DialogueFrame）和内心活动帧(InnerThoughtFrame)的内容。'''
+    type: Literal["description"]
+    character_names: Optional[List[str]] = Field(default_factory=list)
+    content: str = Field(description="小说原文")
+
 
 
 class Scene(BaseModel):
