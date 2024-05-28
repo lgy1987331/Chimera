@@ -23,7 +23,7 @@ class DialogueFrame(BaseModel):
 
 
 class DescriptionFrame(BaseModel):
-    '''描述帧(DescriptionFrame)是一段人物动作描写、剧情解释说明、独白，可以不包含任何角色，也可以包含一个或多个角色'''
+    '''描述帧(DescriptionFrame)是一段人物动作描写、剧情解释说明、旁白，不包含对话。可以不包含任何角色，也可以包含一个或多个角色'''
     type: Literal["description"]
     character_names: Optional[List[str]] = Field(default_factory=list)
     content: str = Field(description="小说原文")
